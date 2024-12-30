@@ -1,12 +1,16 @@
-#include <stdio.h>
+#include <SDL2/SDL.h>
 #include "gui.h"
 
 int main() {
-    if (!init_gui()) {
-        fprintf(stderr, "Failed to initialize GUI\n");
+    SDL_Window* window = NULL;
+    SDL_Renderer* renderer = NULL;
+
+    if (!init_gui(&window, &renderer)) {
         return 1;
     }
-    run_game();
-    cleanup_gui();
+
+    run_game(renderer);
+    cleanup_gui(window, renderer);
+
     return 0;
 }
