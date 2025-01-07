@@ -20,8 +20,8 @@ void move_snake(GameState* state, int dx, int dy);
 int check_collision(GameState* state);
 void generate_food(GameState* state);
 int check_food_collision(GameState* state);
-void draw_snake(SDL_Renderer* renderer, GameState* state);
-void draw_food(SDL_Renderer* renderer, GameState* state);
+void draw_snake(GameState* state);
+void draw_food(GameState* state);
 void cleanup_game(GameState* state);
 
 #endif

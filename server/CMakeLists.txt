@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 3.28)
 project(POS C)
 
-add_subdirectory(client)
-add_subdirectory(server)
+add_executable(server server.c game_logic.c)

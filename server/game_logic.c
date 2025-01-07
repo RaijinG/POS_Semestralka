@@ -31,7 +31,7 @@ void cleanup_game(GameState* state) {
         free(current);
         current = next;
     }
-    state->snake_head = NULL;  // Avoid dangling pointer
+    state->snake_head = NULL;
 }
 
 void move_snake(GameState* state, int dx, int dy) {
@@ -88,17 +88,10 @@ int check_food_collision(GameState* state) {
     return 0;
 }
 
-void draw_snake(SDL_Renderer* renderer, GameState* state) {
-    Snake* current = state->snake_head;
-    while (current) {
-        SDL_Rect rect = {current->x, current->y, SNAKE_SIZE, SNAKE_SIZE};
-        SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-        SDL_RenderFillRect(renderer, &rect);
-        current = current->next;
-    }
+void draw_snake(GameState* state) {
+
 }
 
-void draw_food(SDL_Renderer* renderer, GameState* state) {
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-    SDL_RenderFillRect(renderer, &state->food);
+void draw_food(GameState* state) {
+
 }

@@ -3,6 +3,10 @@
 #include <SDL2/SDL.h>
 
 int init_gui(SDL_Window** window, SDL_Renderer** renderer) {
+    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+        printf("SDL could not initialize!");
+        return 0;
+    }
 
     *window = SDL_CreateWindow(
         "Snake Game",
@@ -10,11 +14,11 @@ int init_gui(SDL_Window** window, SDL_Renderer** renderer) {
         800, 600,
         SDL_WINDOW_SHOWN
     );
-
     *renderer = SDL_CreateRenderer(*window, -1, SDL_RENDERER_ACCELERATED);
 
     return 1;
 }
+
 
 void run_game(SDL_Renderer* renderer) {
     GameState state;

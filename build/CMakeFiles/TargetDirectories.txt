@@ -1,0 +1,8 @@
+/mnt/c/Users/tomas/Desktop/POS/build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/tomas/Desktop/POS/build/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/tomas/Desktop/POS/build/client/CMakeFiles/client.dir
+/mnt/c/Users/tomas/Desktop/POS/build/client/CMakeFiles/edit_cache.dir
+/mnt/c/Users/tomas/Desktop/POS/build/client/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/tomas/Desktop/POS/build/server/CMakeFiles/server.dir
+/mnt/c/Users/tomas/Desktop/POS/build/server/CMakeFiles/edit_cache.dir
+/mnt/c/Users/tomas/Desktop/POS/build/server/CMakeFiles/rebuild_cache.dir
