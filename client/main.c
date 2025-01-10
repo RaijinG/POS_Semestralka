@@ -1,6 +1,6 @@
 #include <SDL_render.h>
 #include <SDL_video.h>
-#include <arpa/inet.h>  // Add this header
+#include <arpa/inet.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
