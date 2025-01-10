@@ -31,7 +31,7 @@ void cleanup_game(GameState* state) {
         free(current);
         current = next;
     }
-    state->snake_head = NULL;  // Avoid dangling pointer
+    state->snake_head = NULL;
 }
 
 void move_snake(GameState* state, int dx, int dy) {
