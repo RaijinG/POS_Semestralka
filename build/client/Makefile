@@ -154,30 +154,6 @@ game_logic.c.s:
 	cd /mnt/c/Users/tomas/Desktop/POS/build && $(MAKE) $(MAKESILENT) -f client/CMakeFiles/client.dir/build.make client/CMakeFiles/client.dir/game_logic.c.s
 .PHONY : game_logic.c.s
 
-gui.o: gui.c.o
-.PHONY : gui.o
-
-# target to build an object file
-gui.c.o:
-	cd /mnt/c/Users/tomas/Desktop/POS/build && $(MAKE) $(MAKESILENT) -f client/CMakeFiles/client.dir/build.make client/CMakeFiles/client.dir/gui.c.o
-.PHONY : gui.c.o
-
-gui.i: gui.c.i
-.PHONY : gui.i
-
-# target to preprocess a source file
-gui.c.i:
-	cd /mnt/c/Users/tomas/Desktop/POS/build && $(MAKE) $(MAKESILENT) -f client/CMakeFiles/client.dir/build.make client/CMakeFiles/client.dir/gui.c.i
-.PHONY : gui.c.i
-
-gui.s: gui.c.s
-.PHONY : gui.s
-
-# target to generate assembly for a file
-gui.c.s:
-	cd /mnt/c/Users/tomas/Desktop/POS/build && $(MAKE) $(MAKESILENT) -f client/CMakeFiles/client.dir/build.make client/CMakeFiles/client.dir/gui.c.s
-.PHONY : gui.c.s
-
 main.o: main.c.o
 .PHONY : main.o
 
@@ -202,6 +178,30 @@ main.c.s:
 	cd /mnt/c/Users/tomas/Desktop/POS/build && $(MAKE) $(MAKESILENT) -f client/CMakeFiles/client.dir/build.make client/CMakeFiles/client.dir/main.c.s
 .PHONY : main.c.s
 
+terminal_gui.o: terminal_gui.c.o
+.PHONY : terminal_gui.o
+
+# target to build an object file
+terminal_gui.c.o:
+	cd /mnt/c/Users/tomas/Desktop/POS/build && $(MAKE) $(MAKESILENT) -f client/CMakeFiles/client.dir/build.make client/CMakeFiles/client.dir/terminal_gui.c.o
+.PHONY : terminal_gui.c.o
+
+terminal_gui.i: terminal_gui.c.i
+.PHONY : terminal_gui.i
+
+# target to preprocess a source file
+terminal_gui.c.i:
+	cd /mnt/c/Users/tomas/Desktop/POS/build && $(MAKE) $(MAKESILENT) -f client/CMakeFiles/client.dir/build.make client/CMakeFiles/client.dir/terminal_gui.c.i
+.PHONY : terminal_gui.c.i
+
+terminal_gui.s: terminal_gui.c.s
+.PHONY : terminal_gui.s
+
+# target to generate assembly for a file
+terminal_gui.c.s:
+	cd /mnt/c/Users/tomas/Desktop/POS/build && $(MAKE) $(MAKESILENT) -f client/CMakeFiles/client.dir/build.make client/CMakeFiles/client.dir/terminal_gui.c.s
+.PHONY : terminal_gui.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -214,12 +214,12 @@ help:
 	@echo "... game_logic.o"
 	@echo "... game_logic.i"
 	@echo "... game_logic.s"
-	@echo "... gui.o"
-	@echo "... gui.i"
-	@echo "... gui.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... terminal_gui.o"
+	@echo "... terminal_gui.i"
+	@echo "... terminal_gui.s"
 .PHONY : help
 
 

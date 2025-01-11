@@ -1,10 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/client.dir/game_logic.c.o"
   "CMakeFiles/client.dir/game_logic.c.o.d"
-  "CMakeFiles/client.dir/gui.c.o"
-  "CMakeFiles/client.dir/gui.c.o.d"
   "CMakeFiles/client.dir/main.c.o"
   "CMakeFiles/client.dir/main.c.o.d"
+  "CMakeFiles/client.dir/terminal_gui.c.o"
+  "CMakeFiles/client.dir/terminal_gui.c.o.d"
   "client"
   "client.pdb"
 )

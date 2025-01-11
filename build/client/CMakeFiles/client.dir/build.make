@@ -83,24 +83,10 @@ client/CMakeFiles/client.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/client.dir/main.c.s"
 	cd /mnt/c/Users/tomas/Desktop/POS/build/client && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/tomas/Desktop/POS/client/main.c -o CMakeFiles/client.dir/main.c.s
 
-client/CMakeFiles/client.dir/gui.c.o: client/CMakeFiles/client.dir/flags.make
-client/CMakeFiles/client.dir/gui.c.o: /mnt/c/Users/tomas/Desktop/POS/client/gui.c
-client/CMakeFiles/client.dir/gui.c.o: client/CMakeFiles/client.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/tomas/Desktop/POS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object client/CMakeFiles/client.dir/gui.c.o"
-	cd /mnt/c/Users/tomas/Desktop/POS/build/client && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT client/CMakeFiles/client.dir/gui.c.o -MF CMakeFiles/client.dir/gui.c.o.d -o CMakeFiles/client.dir/gui.c.o -c /mnt/c/Users/tomas/Desktop/POS/client/gui.c
-
-client/CMakeFiles/client.dir/gui.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/client.dir/gui.c.i"
-	cd /mnt/c/Users/tomas/Desktop/POS/build/client && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/c/Users/tomas/Desktop/POS/client/gui.c > CMakeFiles/client.dir/gui.c.i
-
-client/CMakeFiles/client.dir/gui.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/client.dir/gui.c.s"
-	cd /mnt/c/Users/tomas/Desktop/POS/build/client && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/tomas/Desktop/POS/client/gui.c -o CMakeFiles/client.dir/gui.c.s
-
 client/CMakeFiles/client.dir/game_logic.c.o: client/CMakeFiles/client.dir/flags.make
 client/CMakeFiles/client.dir/game_logic.c.o: /mnt/c/Users/tomas/Desktop/POS/client/game_logic.c
 client/CMakeFiles/client.dir/game_logic.c.o: client/CMakeFiles/client.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/tomas/Desktop/POS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object client/CMakeFiles/client.dir/game_logic.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/tomas/Desktop/POS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object client/CMakeFiles/client.dir/game_logic.c.o"
 	cd /mnt/c/Users/tomas/Desktop/POS/build/client && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT client/CMakeFiles/client.dir/game_logic.c.o -MF CMakeFiles/client.dir/game_logic.c.o.d -o CMakeFiles/client.dir/game_logic.c.o -c /mnt/c/Users/tomas/Desktop/POS/client/game_logic.c
 
 client/CMakeFiles/client.dir/game_logic.c.i: cmake_force
@@ -111,20 +97,33 @@ client/CMakeFiles/client.dir/game_logic.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/client.dir/game_logic.c.s"
 	cd /mnt/c/Users/tomas/Desktop/POS/build/client && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/tomas/Desktop/POS/client/game_logic.c -o CMakeFiles/client.dir/game_logic.c.s
 
+client/CMakeFiles/client.dir/terminal_gui.c.o: client/CMakeFiles/client.dir/flags.make
+client/CMakeFiles/client.dir/terminal_gui.c.o: /mnt/c/Users/tomas/Desktop/POS/client/terminal_gui.c
+client/CMakeFiles/client.dir/terminal_gui.c.o: client/CMakeFiles/client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/tomas/Desktop/POS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object client/CMakeFiles/client.dir/terminal_gui.c.o"
+	cd /mnt/c/Users/tomas/Desktop/POS/build/client && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT client/CMakeFiles/client.dir/terminal_gui.c.o -MF CMakeFiles/client.dir/terminal_gui.c.o.d -o CMakeFiles/client.dir/terminal_gui.c.o -c /mnt/c/Users/tomas/Desktop/POS/client/terminal_gui.c
+
+client/CMakeFiles/client.dir/terminal_gui.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/client.dir/terminal_gui.c.i"
+	cd /mnt/c/Users/tomas/Desktop/POS/build/client && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/c/Users/tomas/Desktop/POS/client/terminal_gui.c > CMakeFiles/client.dir/terminal_gui.c.i
+
+client/CMakeFiles/client.dir/terminal_gui.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/client.dir/terminal_gui.c.s"
+	cd /mnt/c/Users/tomas/Desktop/POS/build/client && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/tomas/Desktop/POS/client/terminal_gui.c -o CMakeFiles/client.dir/terminal_gui.c.s
+
 # Object files for target client
 client_OBJECTS = \
 "CMakeFiles/client.dir/main.c.o" \
-"CMakeFiles/client.dir/gui.c.o" \
-"CMakeFiles/client.dir/game_logic.c.o"
+"CMakeFiles/client.dir/game_logic.c.o" \
+"CMakeFiles/client.dir/terminal_gui.c.o"
 
 # External object files for target client
 client_EXTERNAL_OBJECTS =
 
 client/client: client/CMakeFiles/client.dir/main.c.o
-client/client: client/CMakeFiles/client.dir/gui.c.o
 client/client: client/CMakeFiles/client.dir/game_logic.c.o
+client/client: client/CMakeFiles/client.dir/terminal_gui.c.o
 client/client: client/CMakeFiles/client.dir/build.make
-client/client: /usr/lib/x86_64-linux-gnu/libSDL2.so
 client/client: client/CMakeFiles/client.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/mnt/c/Users/tomas/Desktop/POS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable client"
 	cd /mnt/c/Users/tomas/Desktop/POS/build/client && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/client.dir/link.txt --verbose=$(VERBOSE)

@@ -1,1 +1,1 @@
-/usr/bin/cc -g CMakeFiles/client.dir/main.c.o CMakeFiles/client.dir/gui.c.o CMakeFiles/client.dir/game_logic.c.o -o client  /usr/lib/x86_64-linux-gnu/libSDL2.so 
+/usr/bin/cc -g CMakeFiles/client.dir/main.c.o CMakeFiles/client.dir/game_logic.c.o CMakeFiles/client.dir/terminal_gui.c.o -o client  -lpthread 

@@ -5,10 +5,12 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <pthread.h>
 
 #define SERVER_PORT 12345
 
-void handle_client(int newsockfd) {
+void *handle_client(void *arg) {
+    int newsockfd = *((int *)arg);
     char buffer[256];
     int n;
 
@@ -29,14 +31,15 @@ void handle_client(int newsockfd) {
     }
 
     close(newsockfd);
+    return NULL;
 }
 
 int main() {
     int sockfd, newsockfd;
     socklen_t clilen;
     struct sockaddr_in serv_addr, cli_addr;
-    sockfd = socket(AF_INET, SOCK_STREAM, 0);
 
+    sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd < 0) {
         perror("Error opening socket");
         exit(1);
@@ -63,11 +66,13 @@ int main() {
             perror("Error on accept");
             exit(1);
         }
-        printf("Connection established with client\n");
-        handle_client(newsockfd);
+        printf("Connection successful\n");
+
+        pthread_t client_thread;
+        if (pthread_create(&client_thread, NULL, handle_client, (void *)&newsockfd) < 0) {
+            perror("Error creating thread");
+            exit(1);
+        }
+        pthread_detach(client_thread);
     }
-
 }
-
-
-
