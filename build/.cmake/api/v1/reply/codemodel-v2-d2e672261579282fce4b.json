@@ -14,7 +14,7 @@
 					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "3.28"
+						"string" : "3.25"
 					},
 					"projectIndex" : 0,
 					"source" : "."
@@ -24,7 +24,7 @@
 					"jsonFile" : "directory-client-Debug-eda4c8a4dacec2844350.json",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "3.28"
+						"string" : "3.25"
 					},
 					"parentIndex" : 0,
 					"projectIndex" : 0,
@@ -39,7 +39,7 @@
 					"jsonFile" : "directory-server-Debug-244843e92778ba082abc.json",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "3.28"
+						"string" : "3.25"
 					},
 					"parentIndex" : 0,
 					"projectIndex" : 0,
@@ -80,7 +80,7 @@
 				{
 					"directoryIndex" : 2,
 					"id" : "server::@d19778d2e34a1e3ddfc0",
-					"jsonFile" : "target-server-Debug-14c8d5fb4613d963fb25.json",
+					"jsonFile" : "target-server-Debug-448a2d29b1c70f3075c7.json",
 					"name" : "server",
 					"projectIndex" : 0
 				}

@@ -13,9 +13,34 @@ typedef struct GameState {
     struct {
         int x, y;
     } food;
+    int screen_width;
+    int screen_height;
 } GameState;
 
-void init_game(GameState* state);
+typedef enum {
+    Easy = 1,
+    Normal,
+    Hard
+} Difficulty;
+
+typedef enum {
+    Small = 1,
+    Medium,
+    Large
+} MapSize;
+
+typedef enum {
+    Classic = 1,
+    Challenge
+} GameMode;
+
+typedef struct {
+    Difficulty difficulty;
+    MapSize map_size;
+    GameMode gamemode;
+} GameOptions;
+
+void init_game(GameState* state, GameOptions* options);
 void cleanup_game(GameState* state);
 void move_snake(GameState* state, int dx, int dy);
 int check_collision(GameState* state);

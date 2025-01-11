@@ -4,7 +4,7 @@
 #include "game_logic.h"
 
 void draw_game(GameState* state);
-void run_game(GameState* state);
+void run_game(GameState* state, GameOptions* options);
 int kbhit();
 void init_terminal();
 void reset_terminal();

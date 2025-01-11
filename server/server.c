@@ -66,13 +66,8 @@ int main() {
             perror("Error on accept");
             exit(1);
         }
-        printf("Connection successful\n");
 
         pthread_t client_thread;
-        if (pthread_create(&client_thread, NULL, handle_client, (void *)&newsockfd) < 0) {
-            perror("Error creating thread");
-            exit(1);
-        }
-        pthread_detach(client_thread);
+        pthread_create(&client_thread, NULL, handle_client, &newsockfd);
     }
 }

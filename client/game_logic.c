@@ -3,18 +3,18 @@
 #include <time.h>
 #include <pthread.h>
 
-#define SCREEN_WIDTH 40
-#define SCREEN_HEIGHT 20
-
 pthread_mutex_t game_logic_mutex = PTHREAD_MUTEX_INITIALIZER;
 
-void init_game(GameState* state) {
+void init_game(GameState* state, GameOptions* options) {
     srand(time(NULL));
+
+    state->screen_width = options->map_size == Small ? 20 : options->map_size == Medium ? 40 : 60;
+    state->screen_height = options->map_size == Small ? 10 : options->map_size == Medium ? 20 : 30;
 
     pthread_mutex_lock(&game_logic_mutex);
     state->snake_head = (Snake*)malloc(sizeof(Snake));
-    state->snake_head->x = SCREEN_WIDTH / 2;
-    state->snake_head->y = SCREEN_HEIGHT / 2;
+    state->snake_head->x = state->screen_width / 2;
+    state->snake_head->y = state->screen_height / 2;
     state->snake_head->next = NULL;
     state->snake_length = 1;
     state->food_eaten = 0;
@@ -37,8 +37,8 @@ void cleanup_game(GameState* state) {
 void move_snake(GameState* state, int dx, int dy) {
     pthread_mutex_lock(&game_logic_mutex);
     Snake* new_head = (Snake*)malloc(sizeof(Snake));
-    new_head->x = (state->snake_head->x + dx + SCREEN_WIDTH) % SCREEN_WIDTH;
-    new_head->y = (state->snake_head->y + dy + SCREEN_HEIGHT) % SCREEN_HEIGHT;
+    new_head->x = (state->snake_head->x + dx + state->screen_width) % state->screen_width;
+    new_head->y = (state->snake_head->y + dy + state->screen_height) % state->screen_height;
     new_head->next = state->snake_head;
     state->snake_head = new_head;
 
@@ -58,11 +58,11 @@ void move_snake(GameState* state, int dx, int dy) {
 int check_collision(GameState* state) {
     pthread_mutex_lock(&game_logic_mutex);
 
-    if (state->snake_head->x <= 0 || state->snake_head->x >= SCREEN_WIDTH - 1 ||
-        state->snake_head->y <= 0 || state->snake_head->y >= SCREEN_HEIGHT - 1) {
+    if (state->snake_head->x <= 0 || state->snake_head->x >= state->screen_width - 1 ||
+        state->snake_head->y <= 0 || state->snake_head->y >= state->screen_height - 1) {
         pthread_mutex_unlock(&game_logic_mutex);
         return 1;
-        }
+    }
 
     Snake* current = state->snake_head->next;
     while (current) {
@@ -78,8 +78,8 @@ int check_collision(GameState* state) {
 }
 
 void generate_food(GameState* state) {
-    state->food.x = rand() % (SCREEN_WIDTH - 2) + 1;
-    state->food.y = rand() % (SCREEN_HEIGHT - 2) + 1;
+    state->food.x = rand() % (state->screen_width - 2) + 1;
+    state->food.y = rand() % (state->screen_height - 2) + 1;
 }
 
 int check_food_collision(GameState* state) {

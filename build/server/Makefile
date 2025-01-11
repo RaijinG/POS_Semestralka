@@ -130,30 +130,6 @@ server/fast:
 	cd /mnt/c/Users/tomas/Desktop/POS/build && $(MAKE) $(MAKESILENT) -f server/CMakeFiles/server.dir/build.make server/CMakeFiles/server.dir/build
 .PHONY : server/fast
 
-game_logic.o: game_logic.c.o
-.PHONY : game_logic.o
-
-# target to build an object file
-game_logic.c.o:
-	cd /mnt/c/Users/tomas/Desktop/POS/build && $(MAKE) $(MAKESILENT) -f server/CMakeFiles/server.dir/build.make server/CMakeFiles/server.dir/game_logic.c.o
-.PHONY : game_logic.c.o
-
-game_logic.i: game_logic.c.i
-.PHONY : game_logic.i
-
-# target to preprocess a source file
-game_logic.c.i:
-	cd /mnt/c/Users/tomas/Desktop/POS/build && $(MAKE) $(MAKESILENT) -f server/CMakeFiles/server.dir/build.make server/CMakeFiles/server.dir/game_logic.c.i
-.PHONY : game_logic.c.i
-
-game_logic.s: game_logic.c.s
-.PHONY : game_logic.s
-
-# target to generate assembly for a file
-game_logic.c.s:
-	cd /mnt/c/Users/tomas/Desktop/POS/build && $(MAKE) $(MAKESILENT) -f server/CMakeFiles/server.dir/build.make server/CMakeFiles/server.dir/game_logic.c.s
-.PHONY : game_logic.c.s
-
 server.o: server.c.o
 .PHONY : server.o
 
@@ -187,9 +163,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... server"
-	@echo "... game_logic.o"
-	@echo "... game_logic.i"
-	@echo "... game_logic.s"
 	@echo "... server.o"
 	@echo "... server.i"
 	@echo "... server.s"

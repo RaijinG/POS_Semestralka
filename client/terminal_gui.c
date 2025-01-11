@@ -5,12 +5,6 @@
 #include <termios.h>
 #include <sys/ioctl.h>
 
-#define SCREEN_WIDTH 40
-#define SCREEN_HEIGHT 20
-#define SNAKE_CHAR 'O'
-#define FOOD_CHAR 'X'
-#define EMPTY_CHAR ' '
-
 static struct termios old_tio, new_tio;
 
 void init_terminal() {
@@ -27,42 +21,47 @@ void reset_terminal() {
 void draw_game(GameState* state) {
     system("clear");
 
-    char screen[SCREEN_HEIGHT][SCREEN_WIDTH];
+    char screen[state->screen_height][state->screen_width];
 
-    for (int i = 0; i < SCREEN_HEIGHT; i++) {
-        for (int j = 0; j < SCREEN_WIDTH; j++) {
-            if (i == 0 || i == SCREEN_HEIGHT - 1) {
+    for (int i = 0; i < state->screen_height; i++) {
+        for (int j = 0; j < state->screen_width; j++) {
+            if (i == 0 || i == state->screen_height - 1) {
                 screen[i][j] = '-';
-            } else if (j == 0 || j == SCREEN_WIDTH - 1) {
+            } else if (j == 0 || j == state->screen_width - 1) {
                 screen[i][j] = '|';
             } else {
-                screen[i][j] = EMPTY_CHAR;
+                screen[i][j] = ' ';
             }
         }
     }
 
     Snake* current = state->snake_head;
     while (current) {
-        if (current->y > 0 && current->y < SCREEN_HEIGHT - 1 &&
-            current->x > 0 && current->x < SCREEN_WIDTH - 1) {
-            screen[current->y][current->x] = SNAKE_CHAR;
-        }
+        if (current->y > 0 && current->y < state->screen_height - 1 &&
+            current->x > 0 && current->x < state->screen_width - 1) {
+            screen[current->y][current->x] = 'O';
+            }
         current = current->next;
     }
 
-    screen[state->food.y][state->food.x] = FOOD_CHAR;
+    screen[state->food.y][state->food.x] = 'X';
 
-    for (int i = 0; i < SCREEN_HEIGHT; i++) {
-        for (int j = 0; j < SCREEN_WIDTH; j++) {
+    for (int i = 0; i < state->screen_height; i++) {
+        for (int j = 0; j < state->screen_width; j++) {
             putchar(screen[i][j]);
+        }
+        if (i == 1) {
+            printf("  Score: %d", state->snake_length - 1);
         }
         putchar('\n');
     }
 }
 
-void run_game(GameState* state) {
+
+void run_game(GameState* state, GameOptions* options) {
     int dx = 1, dy = 0;
     int running = 1;
+    int delay = options->difficulty == Easy ? 300000 : options->difficulty == Normal ? 200000 : 100000;
 
     init_terminal();
     atexit(reset_terminal);
@@ -91,7 +90,7 @@ void run_game(GameState* state) {
         }
 
         draw_game(state);
-        usleep(200000);
+        usleep(delay);
     }
 }
 

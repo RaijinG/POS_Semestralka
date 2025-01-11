@@ -8,7 +8,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/mnt/c/Users/tomas/Desktop/POS/server/game_logic.c" "server/CMakeFiles/server.dir/game_logic.c.o" "gcc" "server/CMakeFiles/server.dir/game_logic.c.o.d"
   "/mnt/c/Users/tomas/Desktop/POS/server/server.c" "server/CMakeFiles/server.dir/server.c.o" "gcc" "server/CMakeFiles/server.dir/server.c.o.d"
   )
 

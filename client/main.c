@@ -11,6 +11,7 @@
 #define SERVER_PORT 12345
 
 int sockfd;
+GameOptions options;
 
 void *server_communication_thread(void *arg) {
     struct sockaddr_in server_addr;
@@ -39,23 +40,65 @@ void *server_communication_thread(void *arg) {
 
 void *game_thread(void *arg) {
     GameState state;
-    init_game(&state);
-    run_game(&state);
+    init_game(&state, &options);
+    run_game(&state, &options);
     cleanup_game(&state);
     close(sockfd);
     return NULL;
 }
 
+void show_main_menu() {
+    int choice;
+    while (1) {
+        printf("\n--- Main Menu ---\n");
+        printf("1. Play the game\n");
+        printf("2. Choose difficulty\n");
+        printf("3. Choose the size of the map\n");
+        printf("4. Choose the gamemode\n");
+        printf("5. Exit\n");
+        printf("Select an option: ");
+        scanf("%d", &choice);
+
+        if (choice == 1) {
+            pthread_t server_thread;
+            pthread_t game_logic_thread;
+
+            pthread_create(&server_thread, NULL, server_communication_thread, NULL);
+            pthread_create(&game_logic_thread, NULL, game_thread, NULL);
+
+            pthread_join(server_thread, NULL);
+            pthread_join(game_logic_thread, NULL);
+            break;
+        } else if (choice == 2) {
+            printf("1. Easy\n2. Medium\n3. Hard\n");
+            printf("Select difficulty: ");
+            scanf("%d", &choice);
+            options.difficulty = choice;
+        } else if (choice == 3) {
+            printf("1. Small\n2. Medium\n3. Large\n");
+            printf("Select map size: ");
+            scanf("%d", &choice);
+            options.map_size = choice;
+        } else if (choice == 4) {
+            printf("1. Classic\n2. Challenge\n");
+            printf("Select gamemode: ");
+            scanf("%d", &choice);
+            options.gamemode = choice;
+        } else if (choice == 5) {
+            printf("Exiting...\n");
+            exit(0);
+        } else {
+            printf("Invalid option, try again.\n");
+        }
+    }
+}
+
 int main() {
+    options.difficulty = Medium;
+    options.map_size = Medium;
+    options.gamemode = Classic;
 
-    pthread_t server_thread;
-    pthread_t game_logic_thread;
-
-    pthread_create(&server_thread, NULL, server_communication_thread, NULL);
-    pthread_create(&game_logic_thread, NULL, game_thread, NULL);
-
-    pthread_join(server_thread, NULL);
-    pthread_join(game_logic_thread, NULL);
+    show_main_menu();
 
     return 0;
 }
