@@ -1027,7 +1027,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/mnt/c/Users/tomas/Desktop/POS/build/server_build"
+			"value" : "/mnt/c/Users/tomas/Desktop/POS/build/server"
 		},
 		{
 			"name" : "POS_IS_TOP_LEVEL",
@@ -1052,18 +1052,6 @@
 			],
 			"type" : "STATIC",
 			"value" : "/mnt/c/Users/tomas/Desktop/POS/server"
-		},
-		{
-			"name" : "SDL2_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "The directory containing a CMake configuration file for SDL2."
-				}
-			],
-			"type" : "PATH",
-			"value" : "/usr/lib/x86_64-linux-gnu/cmake/SDL2"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",

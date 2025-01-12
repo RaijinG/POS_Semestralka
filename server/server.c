@@ -10,10 +10,6 @@
 
 #define SERVER_PORT 12345
 
-typedef struct {
-    int sockfd;
-} ServerInfo;
-
 void *handle_client(void *arg) {
     int *newsockfd = (int *)arg;
     char buffer[256];
@@ -37,31 +33,25 @@ void *handle_client(void *arg) {
     return NULL;
 }
 
-void handle_sigint(int sig, siginfo_t *info, void *context) {
-    ServerInfo *server_info = (ServerInfo *)info->si_value.sival_ptr;
-    if (server_info->sockfd != -1) {
-        close(server_info->sockfd);
+void handle_sigint(int sig) {
+    int sockfd = -1;
+    if (sockfd != -1) {
+        close(sockfd);
     }
-    printf("Server terminated gracefully.\n");
+    printf("Server terminated correctly.\n");
     exit(0);
 }
 
 int main() {
+    int sockfd = -1;
     int newsockfd;
     socklen_t clilen;
     struct sockaddr_in serv_addr, cli_addr;
 
-    ServerInfo server_info;
-    server_info.sockfd = -1;
+    signal(SIGINT, handle_sigint);
 
-    struct sigaction sa;
-    sa.sa_flags = SA_SIGINFO;
-    sa.sa_sigaction = handle_sigint;
-    sigemptyset(&sa.sa_mask);
-    sigaction(SIGINT, &sa, NULL);
-
-    server_info.sockfd = socket(AF_INET, SOCK_STREAM, 0);
-    if (server_info.sockfd < 0) {
+    sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    if (sockfd < 0) {
         perror("Error opening socket");
         exit(1);
     }
@@ -71,16 +61,16 @@ int main() {
     serv_addr.sin_addr.s_addr = INADDR_ANY;
     serv_addr.sin_port = htons(SERVER_PORT);
 
-    if (bind(server_info.sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
+    if (bind(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
         perror("Error on binding");
         exit(1);
     }
 
-    listen(server_info.sockfd, 5);
+    listen(sockfd, 5);
     clilen = sizeof(cli_addr);
 
     while (1) {
-        newsockfd = accept(server_info.sockfd, (struct sockaddr *)&cli_addr, &clilen);
+        newsockfd = accept(sockfd, (struct sockaddr *)&cli_addr, &clilen);
         if (newsockfd < 0) {
             perror("Error on accept");
             exit(1);
@@ -97,6 +87,5 @@ int main() {
         pthread_create(&client_thread, NULL, handle_client, (void *)newsockfd_ptr);
         pthread_detach(client_thread);
     }
-
     return 0;
 }

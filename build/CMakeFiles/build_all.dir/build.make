@@ -66,8 +66,8 @@ include CMakeFiles/build_all.dir/compiler_depend.make
 # Include the progress variables for this target.
 include CMakeFiles/build_all.dir/progress.make
 
-CMakeFiles/build_all: client_build/client
-CMakeFiles/build_all: server_build/server
+CMakeFiles/build_all: client/client
+CMakeFiles/build_all: server/server
 
 build_all: CMakeFiles/build_all
 build_all: CMakeFiles/build_all.dir/build.make

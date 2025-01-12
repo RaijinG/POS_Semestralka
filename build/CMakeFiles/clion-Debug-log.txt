@@ -1,4 +1,35 @@
 /usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -S /mnt/c/Users/tomas/Desktop/POS -B /mnt/c/Users/tomas/Desktop/POS/build
--- Configuring done (0.0s)
+-- The C compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (1.3s)
+CMake Error: Cannot open file for write: /mnt/c/Users/tomas/Desktop/POS/build/client/CMakeFiles/client.dir/build.make.tmp59938
+CMake Error: : System Error: Inappropriate ioctl for device
+CMake Error: Cannot open file for write: /mnt/c/Users/tomas/Desktop/POS/build/client/CMakeFiles/client.dir/compiler_depend.make.tmpddc80
+CMake Error: : System Error: Inappropriate ioctl for device
+CMake Error: Cannot open file for write: /mnt/c/Users/tomas/Desktop/POS/build/client/CMakeFiles/client.dir/compiler_depend.ts.tmp20b16
+CMake Error: : System Error: Inappropriate ioctl for device
+CMake Error: Cannot open file for write: /mnt/c/Users/tomas/Desktop/POS/build/client/CMakeFiles/client.dir/depend.make.tmpa49e4
+CMake Error: : System Error: Inappropriate ioctl for device
+CMake Error: Cannot open file for write: /mnt/c/Users/tomas/Desktop/POS/build/client/CMakeFiles/client.dir/flags.make.tmp5b4cc
+CMake Error: : System Error: Inappropriate ioctl for device
+CMake Error: Cannot open file for write: /mnt/c/Users/tomas/Desktop/POS/build/client/CMakeFiles/client.dir/link.txt.tmp1d873
+CMake Error: : System Error: Inappropriate ioctl for device
+CMake Error: Could not create /mnt/c/Users/tomas/Desktop/POS/build/client/CMakeFiles/client.dir/cmake_clean.cmake
+CMake Error: Cannot open file for write: /mnt/c/Users/tomas/Desktop/POS/build/client/CMakeFiles/client.dir/DependInfo.cmake.tmp985bd
+CMake Error: : System Error: Inappropriate ioctl for device
+CMake Error: Cannot open file for write: /mnt/c/Users/tomas/Desktop/POS/build/client/Makefile.tmp0f3eb
+CMake Error: : System Error: Inappropriate ioctl for device
+CMake Error: Cannot open file for write: /mnt/c/Users/tomas/Desktop/POS/build/client/CMakeFiles/CMakeDirectoryInformation.cmake.tmpe894f
+CMake Error: : System Error: Inappropriate ioctl for device
+CMake Error: Cannot open file for write: /mnt/c/Users/tomas/Desktop/POS/build/client/cmake_install.cmake.tmp9292b
+CMake Error: : System Error: Inappropriate ioctl for device
 -- Generating done (0.2s)
--- Build files have been written to: /mnt/c/Users/tomas/Desktop/POS/build
+CMake Error: Cannot open file for write: /mnt/c/Users/tomas/Desktop/POS/build/client/CMakeFiles/client.dir/progress.make.tmpf5ab2
+CMake Error: : System Error: Inappropriate ioctl for device
+CMake Error: Cannot open file for write: /mnt/c/Users/tomas/Desktop/POS/build/client/CMakeFiles/progress.marks.tmpbe346
+CMake Error: : System Error: Inappropriate ioctl for device
+CMake Generate step failed.  Build files cannot be regenerated correctly.

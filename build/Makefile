@@ -139,7 +139,7 @@ client: cmake_check_build_system
 
 # fast build rule for target.
 client/fast:
-	$(MAKE) $(MAKESILENT) -f client_build/CMakeFiles/client.dir/build.make client_build/CMakeFiles/client.dir/build
+	$(MAKE) $(MAKESILENT) -f client/CMakeFiles/client.dir/build.make client/CMakeFiles/client.dir/build
 .PHONY : client/fast
 
 #=============================================================================
@@ -152,7 +152,7 @@ server: cmake_check_build_system
 
 # fast build rule for target.
 server/fast:
-	$(MAKE) $(MAKESILENT) -f server_build/CMakeFiles/server.dir/build.make server_build/CMakeFiles/server.dir/build
+	$(MAKE) $(MAKESILENT) -f server/CMakeFiles/server.dir/build.make server/CMakeFiles/server.dir/build
 .PHONY : server/fast
 
 # Help Target

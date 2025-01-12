@@ -44,12 +44,12 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/mnt/c/Users/tomas/Desktop/POS/build/client_build/cmake_install.cmake")
+  include("/mnt/c/Users/tomas/Desktop/POS/build/client/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/mnt/c/Users/tomas/Desktop/POS/build/server_build/cmake_install.cmake")
+  include("/mnt/c/Users/tomas/Desktop/POS/build/server/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)

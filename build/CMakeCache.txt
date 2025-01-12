@@ -190,16 +190,13 @@ CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
 //Value Computed by CMake
-POS_BINARY_DIR:STATIC=/mnt/c/Users/tomas/Desktop/POS/build/server_build
+POS_BINARY_DIR:STATIC=/mnt/c/Users/tomas/Desktop/POS/build/server
 
 //Value Computed by CMake
 POS_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 POS_SOURCE_DIR:STATIC=/mnt/c/Users/tomas/Desktop/POS/server
-
-//The directory containing a CMake configuration file for SDL2.
-SDL2_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/SDL2
 
 
 ########################

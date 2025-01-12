@@ -24,8 +24,8 @@
 					]
 				},
 				{
-					"build" : "client_build",
-					"jsonFile" : "directory-client_build-Debug-2b5c188932692599ab28.json",
+					"build" : "client",
+					"jsonFile" : "directory-client-Debug-eda4c8a4dacec2844350.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.25"
@@ -39,8 +39,8 @@
 					]
 				},
 				{
-					"build" : "server_build",
-					"jsonFile" : "directory-server_build-Debug-2eefb6578e7223acb935.json",
+					"build" : "server",
+					"jsonFile" : "directory-server-Debug-244843e92778ba082abc.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.25"
@@ -78,21 +78,21 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "build_all::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-build_all-Debug-a572d5a665501987c13b.json",
+					"jsonFile" : "target-build_all-Debug-8020311cd7422630044e.json",
 					"name" : "build_all",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 1,
-					"id" : "client::@04f81efb14578a482bce",
-					"jsonFile" : "target-client-Debug-e9de1cf6bb19e21ca694.json",
+					"id" : "client::@b0c487aac068df482bf0",
+					"jsonFile" : "target-client-Debug-1d3b2cc347ba7fbfcf98.json",
 					"name" : "client",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 2,
-					"id" : "server::@bd0c5a7dc54c0d1176df",
-					"jsonFile" : "target-server-Debug-a6d787aeeb63ad1d03af.json",
+					"id" : "server::@d19778d2e34a1e3ddfc0",
+					"jsonFile" : "target-server-Debug-448a2d29b1c70f3075c7.json",
 					"name" : "server",
 					"projectIndex" : 0
 				}
