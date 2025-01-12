@@ -52,8 +52,7 @@ void init_game(GameState* state, GameOptions* options);
 void cleanup_game(GameState* state);
 void move_snake(GameState* state, int dx, int dy);
 int check_collision(GameState* state);
-void generate_food(GameState* state);
+void generate_item(GameState* state, int is_obstacle);
 int check_food_collision(GameState* state);
-void generate_obstacle(GameState* state);
 int check_obstacle_collision(GameState* state);
 #endif

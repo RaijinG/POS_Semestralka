@@ -98,7 +98,7 @@ void run_game(GameState* state, GameOptions* options) {
         check_food_collision(state);
 
         if (options->gamemode == Challenge) {
-            generate_obstacle(state);
+            generate_item(state, 1);
         }
 
         draw_game(state);

@@ -6,6 +6,24 @@
 
 pthread_mutex_t game_logic_mutex = PTHREAD_MUTEX_INITIALIZER;
 
+void generate_item(GameState* state, int is_obstacle) {
+    time_t current_time = time(NULL);
+
+    if (is_obstacle) {
+        if (difftime(current_time, state->obstacle_time) >= 10) {
+            Obstacle* new_obstacle = (Obstacle*)malloc(sizeof(Obstacle));
+            new_obstacle->x = rand() % (state->screen_width - 2) + 1;
+            new_obstacle->y = rand() % (state->screen_height - 2) + 1;
+            new_obstacle->next = state->obstacles;
+            state->obstacles = new_obstacle;
+            state->obstacle_time = current_time;
+        }
+    } else {
+        state->food.x = rand() % (state->screen_width - 2) + 1;
+        state->food.y = rand() % (state->screen_height - 2) + 1;
+    }
+}
+
 void init_game(GameState* state, GameOptions* options) {
     srand(time(NULL));
 
@@ -19,9 +37,9 @@ void init_game(GameState* state, GameOptions* options) {
     state->snake_head->next = NULL;
     state->snake_length = 1;
     state->food_eaten = 0;
-    generate_food(state);
     state->obstacles = NULL;
     state->obstacle_time = time(NULL);
+    generate_item(state, 0);
     pthread_mutex_unlock(&game_logic_mutex);
 }
 
@@ -34,6 +52,14 @@ void cleanup_game(GameState* state) {
         current = next;
     }
     state->snake_head = NULL;
+
+    Obstacle* current_obstacle = state->obstacles;
+    while (current_obstacle) {
+        Obstacle* next_obstacle = current_obstacle->next;
+        free(current_obstacle);
+        current_obstacle = next_obstacle;
+    }
+    state->obstacles = NULL;
     pthread_mutex_unlock(&game_logic_mutex);
 }
 
@@ -65,7 +91,7 @@ int check_collision(GameState* state) {
         state->snake_head->y <= 0 || state->snake_head->y >= state->screen_height - 1) {
         pthread_mutex_unlock(&game_logic_mutex);
         return 1;
-        }
+    }
 
     Snake* current = state->snake_head->next;
     while (current) {
@@ -85,38 +111,18 @@ int check_collision(GameState* state) {
     return 0;
 }
 
-
-void generate_food(GameState* state) {
-    state->food.x = rand() % (state->screen_width - 2) + 1;
-    state->food.y = rand() % (state->screen_height - 2) + 1;
-}
-
 int check_food_collision(GameState* state) {
     pthread_mutex_lock(&game_logic_mutex);
     if (state->snake_head->x == state->food.x && state->snake_head->y == state->food.y) {
         state->food_eaten = 1;
         state->snake_length++;
-        generate_food(state);
+        generate_item(state, 0); // Generate new food
         pthread_mutex_unlock(&game_logic_mutex);
         return 1;
     }
     pthread_mutex_unlock(&game_logic_mutex);
     return 0;
 }
-
-void generate_obstacle(GameState* state) {
-    time_t current_time = time(NULL);
-
-    if (difftime(current_time, state->obstacle_time) >= 10) {
-        Obstacle* new_obstacle = (Obstacle*)malloc(sizeof(Obstacle));
-        new_obstacle->x = rand() % (state->screen_width - 2) + 1;
-        new_obstacle->y = rand() % (state->screen_height - 2) + 1;
-        new_obstacle->next = state->obstacles;
-        state->obstacles = new_obstacle;
-        state->obstacle_time = current_time;
-    }
-}
-
 
 int check_obstacle_collision(GameState* state) {
     Obstacle* current = state->obstacles;
@@ -128,4 +134,3 @@ int check_obstacle_collision(GameState* state) {
     }
     return 0;
 }
-
