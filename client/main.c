@@ -51,7 +51,28 @@ void show_main_menu() {
     int choice;
     while (1) {
         printf("\n--- Main Menu ---\n");
-        printf("1. Play the game\n");
+        printf("Current Settings:\n");
+        printf("Difficulty: ");
+        switch (options.difficulty) {
+            case Easy: printf("Easy\n"); break;
+            case Normal: printf("Medium\n"); break;
+            case Hard: printf("Hard\n"); break;
+        }
+
+        printf("Map Size: ");
+        switch (options.map_size) {
+            case Small: printf("Small\n"); break;
+            case Medium: printf("Medium\n"); break;
+            case Large: printf("Large\n"); break;
+        }
+
+        printf("Game Mode: ");
+        switch (options.gamemode) {
+            case Classic: printf("Classic\n"); break;
+            case Challenge: printf("Challenge\n"); break;
+        }
+
+        printf("\n1. Play the game\n");
         printf("2. Choose difficulty\n");
         printf("3. Choose the size of the map\n");
         printf("4. Choose the gamemode\n");
@@ -92,8 +113,6 @@ void show_main_menu() {
         }
     }
 }
-
-
 
 int main() {
     options.difficulty = Medium;
