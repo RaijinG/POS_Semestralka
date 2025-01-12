@@ -7,17 +7,11 @@
 #include <termios.h>
 #include <sys/ioctl.h>
 
-static struct termios old_tio, new_tio;
-
-void init_terminal() {
-    tcgetattr(STDIN_FILENO, &old_tio);
-    new_tio = old_tio;
-    new_tio.c_lflag &= (~ICANON & ~ECHO);
-    tcsetattr(STDIN_FILENO, TCSANOW, &new_tio);
-}
-
-void reset_terminal() {
-    tcsetattr(STDIN_FILENO, TCSANOW, &old_tio);
+void init_terminal(struct termios *old_tio, struct termios *new_tio) {
+    tcgetattr(STDIN_FILENO, old_tio);
+    *new_tio = *old_tio;
+    new_tio->c_lflag &= (~ICANON & ~ECHO);
+    tcsetattr(STDIN_FILENO, TCSANOW, new_tio);
 }
 
 void draw_game(GameState* state) {
@@ -42,7 +36,7 @@ void draw_game(GameState* state) {
         if (current->y > 0 && current->y < state->screen_height - 1 &&
             current->x > 0 && current->x < state->screen_width - 1) {
             screen[current->y][current->x] = 'O';
-            }
+        }
         current = current->next;
     }
 
@@ -53,7 +47,7 @@ void draw_game(GameState* state) {
         if (obstacle->y > 0 && obstacle->y < state->screen_height - 1 &&
             obstacle->x > 0 && obstacle->x < state->screen_width - 1) {
             screen[obstacle->y][obstacle->x] = '#';
-            }
+        }
         obstacle = obstacle->next;
     }
 
@@ -73,8 +67,8 @@ void run_game(GameState* state, GameOptions* options) {
     int running = 1;
     int delay = options->difficulty == Easy ? 300000 : options->difficulty == Normal ? 200000 : 100000;
 
-    init_terminal();
-    atexit(reset_terminal);
+    struct termios old_tio, new_tio;
+    init_terminal(&old_tio, &new_tio);
 
     while (running) {
         if (kbhit()) {

@@ -10,10 +10,8 @@
 
 #define SERVER_PORT 12345
 
-int sockfd;
-GameOptions options;
-
 void *server_communication_thread(void *arg) {
+    int sockfd;
     struct sockaddr_in server_addr;
     char buffer[256];
 
@@ -39,35 +37,37 @@ void *server_communication_thread(void *arg) {
 }
 
 void *game_thread(void *arg) {
+    GameOptions *options = (GameOptions *)arg;
     GameState state;
-    init_game(&state, &options);
-    run_game(&state, &options);
+
+    init_game(&state, options);
+    run_game(&state, options);
     cleanup_game(&state);
-    close(sockfd);
+
     return NULL;
 }
 
-void show_main_menu() {
+void show_main_menu(GameOptions *options) {
     int choice;
     while (1) {
         printf("\n--- Main Menu ---\n");
         printf("Current Settings:\n");
         printf("Difficulty: ");
-        switch (options.difficulty) {
+        switch (options->difficulty) {
             case Easy: printf("Easy\n"); break;
             case Normal: printf("Medium\n"); break;
             case Hard: printf("Hard\n"); break;
         }
 
         printf("Map Size: ");
-        switch (options.map_size) {
+        switch (options->map_size) {
             case Small: printf("Small\n"); break;
             case Medium: printf("Medium\n"); break;
             case Large: printf("Large\n"); break;
         }
 
         printf("Game Mode: ");
-        switch (options.gamemode) {
+        switch (options->gamemode) {
             case Classic: printf("Classic\n"); break;
             case Challenge: printf("Challenge\n"); break;
         }
@@ -85,7 +85,7 @@ void show_main_menu() {
             pthread_t game_logic_thread;
 
             pthread_create(&server_thread, NULL, server_communication_thread, NULL);
-            pthread_create(&game_logic_thread, NULL, game_thread, NULL);
+            pthread_create(&game_logic_thread, NULL, game_thread, options);
 
             pthread_join(server_thread, NULL);
             pthread_join(game_logic_thread, NULL);
@@ -94,17 +94,17 @@ void show_main_menu() {
             printf("1. Easy\n2. Medium\n3. Hard\n");
             printf("Select difficulty: ");
             scanf("%d", &choice);
-            options.difficulty = choice;
+            options->difficulty = choice;
         } else if (choice == 3) {
             printf("1. Small\n2. Medium\n3. Large\n");
             printf("Select map size: ");
             scanf("%d", &choice);
-            options.map_size = choice;
+            options->map_size = choice;
         } else if (choice == 4) {
             printf("1. Classic\n2. Challenge\n");
             printf("Select gamemode: ");
             scanf("%d", &choice);
-            options.gamemode = choice;
+            options->gamemode = choice;
         } else if (choice == 5) {
             printf("Exiting...\n");
             exit(0);
@@ -115,11 +115,9 @@ void show_main_menu() {
 }
 
 int main() {
-    options.difficulty = Medium;
-    options.map_size = Medium;
-    options.gamemode = Classic;
+    GameOptions options = {Medium, Medium, Classic};
 
-    show_main_menu();
+    show_main_menu(&options);
 
     return 0;
 }
