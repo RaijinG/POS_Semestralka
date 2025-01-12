@@ -1,4 +1,6 @@
 #include "terminal_gui.h"
+
+#include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -46,6 +48,15 @@ void draw_game(GameState* state) {
 
     screen[state->food.y][state->food.x] = 'X';
 
+    Obstacle* obstacle = state->obstacles;
+    while (obstacle) {
+        if (obstacle->y > 0 && obstacle->y < state->screen_height - 1 &&
+            obstacle->x > 0 && obstacle->x < state->screen_width - 1) {
+            screen[obstacle->y][obstacle->x] = '#';
+            }
+        obstacle = obstacle->next;
+    }
+
     for (int i = 0; i < state->screen_height; i++) {
         for (int j = 0; j < state->screen_width; j++) {
             putchar(screen[i][j]);
@@ -56,7 +67,6 @@ void draw_game(GameState* state) {
         putchar('\n');
     }
 }
-
 
 void run_game(GameState* state, GameOptions* options) {
     int dx = 1, dy = 0;
@@ -85,8 +95,10 @@ void run_game(GameState* state, GameOptions* options) {
             running = 0;
         }
 
-        if (check_food_collision(state)) {
-            printf("Score: %d\n", state->snake_length);
+        check_food_collision(state);
+
+        if (options->gamemode == Challenge) {
+            generate_obstacle(state);
         }
 
         draw_game(state);

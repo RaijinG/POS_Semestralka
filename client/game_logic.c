@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <pthread.h>
+#include <unistd.h>
 
 pthread_mutex_t game_logic_mutex = PTHREAD_MUTEX_INITIALIZER;
 
@@ -19,6 +20,8 @@ void init_game(GameState* state, GameOptions* options) {
     state->snake_length = 1;
     state->food_eaten = 0;
     generate_food(state);
+    state->obstacles = NULL;
+    state->obstacle_time = time(NULL);
     pthread_mutex_unlock(&game_logic_mutex);
 }
 
@@ -62,7 +65,7 @@ int check_collision(GameState* state) {
         state->snake_head->y <= 0 || state->snake_head->y >= state->screen_height - 1) {
         pthread_mutex_unlock(&game_logic_mutex);
         return 1;
-    }
+        }
 
     Snake* current = state->snake_head->next;
     while (current) {
@@ -73,9 +76,15 @@ int check_collision(GameState* state) {
         current = current->next;
     }
 
+    if (check_obstacle_collision(state)) {
+        pthread_mutex_unlock(&game_logic_mutex);
+        return 1;
+    }
+
     pthread_mutex_unlock(&game_logic_mutex);
     return 0;
 }
+
 
 void generate_food(GameState* state) {
     state->food.x = rand() % (state->screen_width - 2) + 1;
@@ -94,3 +103,29 @@ int check_food_collision(GameState* state) {
     pthread_mutex_unlock(&game_logic_mutex);
     return 0;
 }
+
+void generate_obstacle(GameState* state) {
+    time_t current_time = time(NULL);
+
+    if (difftime(current_time, state->obstacle_time) >= 10) {
+        Obstacle* new_obstacle = (Obstacle*)malloc(sizeof(Obstacle));
+        new_obstacle->x = rand() % (state->screen_width - 2) + 1;
+        new_obstacle->y = rand() % (state->screen_height - 2) + 1;
+        new_obstacle->next = state->obstacles;
+        state->obstacles = new_obstacle;
+        state->obstacle_time = current_time;
+    }
+}
+
+
+int check_obstacle_collision(GameState* state) {
+    Obstacle* current = state->obstacles;
+    while (current) {
+        if (state->snake_head->x == current->x && state->snake_head->y == current->y) {
+            return 1;
+        }
+        current = current->next;
+    }
+    return 0;
+}
+

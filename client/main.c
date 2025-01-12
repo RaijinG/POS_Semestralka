@@ -93,6 +93,8 @@ void show_main_menu() {
     }
 }
 
+
+
 int main() {
     options.difficulty = Medium;
     options.map_size = Medium;

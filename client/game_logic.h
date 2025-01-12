@@ -1,10 +1,16 @@
 #ifndef GAME_LOGIC_H
 #define GAME_LOGIC_H
+#include <time.h>
 
 typedef struct Snake {
     int x, y;
     struct Snake* next;
 } Snake;
+
+typedef struct Obstacle {
+    int x, y;
+    struct Obstacle* next;
+} Obstacle;
 
 typedef struct GameState {
     Snake* snake_head;
@@ -15,6 +21,8 @@ typedef struct GameState {
     } food;
     int screen_width;
     int screen_height;
+    Obstacle* obstacles;
+    time_t obstacle_time;
 } GameState;
 
 typedef enum {
@@ -46,5 +54,6 @@ void move_snake(GameState* state, int dx, int dy);
 int check_collision(GameState* state);
 void generate_food(GameState* state);
 int check_food_collision(GameState* state);
-
+void generate_obstacle(GameState* state);
+int check_obstacle_collision(GameState* state);
 #endif
