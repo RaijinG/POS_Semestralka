@@ -45,6 +45,7 @@ void init_game(GameState* state, GameOptions* options) {
 
 void cleanup_game(GameState* state) {
     pthread_mutex_lock(&game_logic_mutex);
+
     Snake* current = state->snake_head;
     while (current) {
         Snake* next = current->next;
@@ -60,6 +61,7 @@ void cleanup_game(GameState* state) {
         current_obstacle = next_obstacle;
     }
     state->obstacles = NULL;
+
     pthread_mutex_unlock(&game_logic_mutex);
 }
 
@@ -116,7 +118,7 @@ int check_food_collision(GameState* state) {
     if (state->snake_head->x == state->food.x && state->snake_head->y == state->food.y) {
         state->food_eaten = 1;
         state->snake_length++;
-        generate_item(state, 0); // Generate new food
+        generate_item(state, 0);
         pthread_mutex_unlock(&game_logic_mutex);
         return 1;
     }

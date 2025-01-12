@@ -93,7 +93,6 @@ void run_game(GameState* state, GameOptions* options) {
         if (check_collision(state)) {
             printf("Game Over\n");
             running = 0;
-            return;
         }
 
         check_food_collision(state);
@@ -106,7 +105,6 @@ void run_game(GameState* state, GameOptions* options) {
         usleep(delay);
     }
 }
-
 
 int kbhit() {
     int bytes;

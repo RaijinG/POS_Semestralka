@@ -8,7 +8,7 @@
 	"installers" : [],
 	"paths" : 
 	{
-		"build" : "server",
-		"source" : "server"
+		"build" : "client_build",
+		"source" : "client"
 	}
 }

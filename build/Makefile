@@ -117,6 +117,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named build_all
+
+# Build rule for target.
+build_all: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 build_all
+.PHONY : build_all
+
+# fast build rule for target.
+build_all/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/build_all.dir/build.make CMakeFiles/build_all.dir/build
+.PHONY : build_all/fast
+
+#=============================================================================
 # Target rules for targets named client
 
 # Build rule for target.
@@ -126,7 +139,7 @@ client: cmake_check_build_system
 
 # fast build rule for target.
 client/fast:
-	$(MAKE) $(MAKESILENT) -f client/CMakeFiles/client.dir/build.make client/CMakeFiles/client.dir/build
+	$(MAKE) $(MAKESILENT) -f client_build/CMakeFiles/client.dir/build.make client_build/CMakeFiles/client.dir/build
 .PHONY : client/fast
 
 #=============================================================================
@@ -139,7 +152,7 @@ server: cmake_check_build_system
 
 # fast build rule for target.
 server/fast:
-	$(MAKE) $(MAKESILENT) -f server/CMakeFiles/server.dir/build.make server/CMakeFiles/server.dir/build
+	$(MAKE) $(MAKESILENT) -f server_build/CMakeFiles/server.dir/build.make server_build/CMakeFiles/server.dir/build
 .PHONY : server/fast
 
 # Help Target
@@ -150,6 +163,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... build_all"
 	@echo "... client"
 	@echo "... server"
 .PHONY : help
