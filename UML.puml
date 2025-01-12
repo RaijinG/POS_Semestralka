@@ -1,0 +1,89 @@
+@startuml
+
+package "Client" {
+    class Main {
+        +main()
+        +show_main_menu()
+    }
+
+    class GameLogic {
+        +init_game(state, options)
+        +cleanup_game(state)
+        +move_snake(state, dx, dy)
+        +check_collision(state)
+        +generate_item(state, is_obstacle)
+        +check_food_collision(state)
+        +check_obstacle_collision(state)
+    }
+
+    class TerminalGUI {
+        +init_terminal()
+        +reset_terminal()
+        +draw_game(state)
+        +run_game(state, options)
+        +kbhit()
+    }
+
+    Main --> GameLogic
+    Main --> TerminalGUI
+    GameLogic --> GameOptions
+    TerminalGUI --> GameState
+}
+
+package "Server" {
+    class Server {
+        +handle_client()
+    }
+}
+
+class GameState {
+    -snake_head: Snake
+    -snake_length: int
+    -food_eaten: int
+    -food: (x: int, y: int)
+    -screen_width: int
+    -screen_height: int
+    -obstacles: Obstacle
+    -obstacle_time: time_t
+}
+
+class Snake {
+    -x: int
+    -y: int
+    -next: Snake
+}
+
+class Obstacle {
+    -x: int
+    -y: int
+    -next: Obstacle
+}
+
+class GameOptions {
+    -difficulty: Difficulty
+    -map_size: MapSize
+    -gamemode: GameMode
+}
+
+enum Difficulty {
+    Easy
+    Normal
+    Hard
+}
+
+enum MapSize {
+    Small
+    Medium
+    Large
+}
+
+enum GameMode {
+    Classic
+    Challenge
+}
+
+Main --> GameOptions
+GameLogic --> GameState
+Server --> GameState
+
+@enduml
